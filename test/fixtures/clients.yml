@@ -1,9 +1,45 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  id: 1
+  name: Hello
   description: MyString
 
 two:
+  id: 2
+  name: MyString
+  description: MyString
+
+three:
+  id: 3
+  name: MyString
+  description: MyString
+four:
+  id: 4
+  name: MyString
+  description: MyString
+
+five:
+  id: 5
+  name: MyString
+  description: MyString
+
+six:
+  id: 6
+  name: MyString
+  description: MyString
+
+seven:
+  id: 7
+  name: MyString
+  description: MyString
+
+eight:
+  id: 8
+  name: MyString
+  description: MyString
+
+nine:
+  id: 9
   name: MyString
   description: MyString

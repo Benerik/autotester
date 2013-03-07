@@ -1,4 +1,5 @@
-
+require 'simplecov'
+SimpleCov.start
 
 require 'spork'
 
@@ -36,6 +37,7 @@ Spork.prefork do
       DatabaseCleaner.clean
     end
   end
+
 end
 
 Spork.each_run do

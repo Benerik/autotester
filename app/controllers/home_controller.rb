@@ -6,6 +6,7 @@ class HomeController < ApplicationController
   end
 
   def add_item
+    puts(params)
     Client.create(:name => params["name"], :description => params["description"])
     render json: {}
   end

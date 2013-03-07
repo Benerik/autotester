@@ -45,14 +45,15 @@ describe HomeController do
 
   describe "new item" do
     it "add item success save" do
-      post :add_item ,{"name"=>"test", "description"=>"test description"},:format => :json
-      @item = Item.all.last
+      puts(valid_params)
+      post :add_item ,FactoryGirl.attributes_for(:item),:format => :json
+      @item = Client.all.last
       @item.should_not be_nil
     end
     it "add item success with correct values" do
-      post :add_item ,{"name"=>"test", "description"=>"test description"},:format => :json
-      @item = Item.all.last
-      @item.name.should == 'test'
+      post :add_item ,FactoryGirl.attributes_for(:item),:format => :json
+      @item = Client.all.last
+      @item.name.should =='nib 1'
     end
   end
   describe 'delete item' do
@@ -63,9 +64,8 @@ describe HomeController do
       item = FactoryGirl.create(:item_3)
     end
     it "delete one item" do
-      @item = Item.all
-      puts(@item.first.to_yaml)
-      post :remove_item ,{"list"=>["1"], "page"=>"", "content"=>"", "type"=>"id"},:format => :json
+      @item = Client.all
+      post :remove_item ,{"list"=>["1"], "page"=>"","per"=>'10', "content"=>"", "type"=>"id"},:format => :json
     end
   end
 

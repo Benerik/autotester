@@ -22,7 +22,7 @@
         %select{"class" => "search-content"}
           %option{"selected" => "selected", "value" => "id"}
             = I18n.t('active_records.client_model.id')
-      %div{"class" => "btn-search"}
+      %div{"class" => "btn-search","id" => "search_item"}
       %input{"type" => "text", "id" => "promo-search", "placeholder" => I18n.t('common.type_something')}
     %div.table-wrapper-content
       %table{"class" => "stdtable stdtablecb", "id" => "list-promotions"}
@@ -41,8 +41,7 @@
           - @item.each do |item|
             %tr{"id" => "proid-"+item.id.to_s}
               %td.center
-                %span
-                  %input{"type" => "checkbox"}
+                %input{"type" => "checkbox"}
               %td.center
                 %span
                   = item.id
@@ -96,11 +95,11 @@
       %div.row
         %div
           %label Name
-        %input
+        %input#new_item_name
       %div.row
         %div
           %label Description
-        %input
+        %input#new_item_description
     %div.footer
       %button.stdbtn{:type => "cancel"} Cancel
-      %button.stdbtn{:type => "save"} Save
+      %button.stdbtn#new_item_save{:type => "save"} Save
