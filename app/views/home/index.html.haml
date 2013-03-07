@@ -1,0 +1,106 @@
+%div{:style => "width: 80%; margin: 5% auto"}
+  %div{"class" => "dataTables_wrapper", "id" => "lists-item"}
+    %div.contenttitle
+      %h2.general
+        %span
+          = I18n.t('views.home_folder.index_view.title')
+    %div{"id" => "dyntable_length", "class" => "dataTables_length"}
+      %a{"href" => "#"}
+        %button{"class" => "stdbtn", :type => "new", :id=> "btn-new"}
+          = I18n.t('common.new')
+      %a{"href" => "#", "id" => "btn-delete"}
+        %button{"class" => "stdbtn", :type => "delete", :id => "btn-delete"}
+          = I18n.t('common.delete')
+      %a{"href" => "#", "id" => "btn-delete"}
+        %button{"class" => "stdbtn", :type => "get", :id => "btn-get"}
+          = I18n.t('common.get')
+    %div{"class" => "dataTables_filter", "id" => "dyntable_filter"}
+      %div{"class" => "search-select"}
+        %div
+          = I18n.t('active_records.client_model.id')
+        %span{"class" => "triangle"}
+        %select{"class" => "search-content"}
+          %option{"selected" => "selected", "value" => "id"}
+            = I18n.t('active_records.client_model.id')
+      %div{"class" => "btn-search"}
+      %input{"type" => "text", "id" => "promo-search", "placeholder" => I18n.t('common.type_something')}
+    %div.table-wrapper-content
+      %table{"class" => "stdtable stdtablecb", "id" => "list-promotions"}
+        %thead
+          %th.head0.width64
+            %input{"type" => "checkbox", "class" => "checkall"}
+          %th.head1.width96
+            = I18n.t('active_records.client_model.id')
+          %th.head0
+            = I18n.t('active_records.client_model.name')
+          %th.head1
+            = I18n.t('active_records.client_model.description')
+          %th.head0
+            = I18n.t('active_records.client_model.server_id')
+        %tbody
+          - @item.each do |item|
+            %tr{"id" => "proid-"+item.id.to_s}
+              %td.center
+                %span
+                  %input{"type" => "checkbox"}
+              %td.center
+                %span
+                  = item.id
+              %td.center
+                %span
+                  = item.name
+              %td.center
+                %span
+                  = item.description
+              %td.center
+                %span
+                  = item.server_id
+    %div{"class" => "dataTables_paginate paging_full_numbers"}
+      %label{"style" => "float: left"}
+        Show
+        %select{"size" => 1, "name" => "dyntable_length", "id" => "promotions-per-page"}
+          - @nums = [10, 25, 50, 100]
+          - @nums.each do |num|
+            - if session[:number_per_page].to_i == num
+              %option{"value" => num, "selected" => "selected"}
+                = num
+            - if session[:number_per_page].to_i != num
+              %option{"value" => num}
+                = num
+      %div{"id" => "dyntable_paginate"}
+        - @pages = (@total.to_f / session[:number_per_page].to_f).ceil
+        - if @pages > 1
+          %span{"class" => "first paginate_button", "id" => "dyntable_first"}
+            = I18n.t('common.first')
+          %span{"class" => "previous paginate_button", "id" => "dyntable_previous"}
+            = I18n.t('common.previous')
+          %span{"class" => "paginate-body"}
+            %span.paginate-body-inner
+              - @pages.times do |page|
+                - page = page + 1
+                - if page == 1
+                  %span.paginate_active
+                    = page
+                - if page != 1
+                  %span.paginate_button
+                    = page
+          %span{"class" => "next paginate_button", "id" => "dyntable_next"}
+            = I18n.t('common.next')
+          %span{"class" => "last paginate_button", "id" => "dyntable_last"}
+            = I18n.t('common.last')
+%div.popup.hide
+  %div.container
+    %div.header
+      %div.title Add Item
+    %div.body
+      %div.row
+        %div
+          %label Name
+        %input
+      %div.row
+        %div
+          %label Description
+        %input
+    %div.footer
+      %button.stdbtn{:type => "cancel"} Cancel
+      %button.stdbtn{:type => "save"} Save

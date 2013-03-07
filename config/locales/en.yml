@@ -1,0 +1,41 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  common:
+    save: "Save"
+    edit: "Edit"
+    add: "Add"
+    new: "New"
+    delete: "Delete"
+    next: "Next"
+    first: "First"
+    previous: "Previous"
+    last: "Last"
+    type_something: "type something..."
+    generate: "Generate"
+    update: "Update"
+    quote: "Quote"
+    insert: "Insert"
+    get: "Get from server"
+    dialog:
+      confirm:
+        title: "Confirmation Dialog"
+        content: "Are you sure about that?"
+    created_at: "Created at"
+    last_modified: "Last Modified"
+    want_to_create: "Want to create? "
+    no_result: "Not Found Results"
+  views:
+    home_folder:
+      index_view:
+        title: "Restful API"
+  active_records:
+    client_model:
+      id: "ID"
+      name: "Name"
+      description: "Description"
+      server_id: "From Server"
+
+
+
